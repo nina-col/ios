@@ -22,15 +22,15 @@ class PaintViewModel {
         lastError = nil
 
         // 1)Buscar ID
-        guard let autor = term.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
-              let searchURL = URL(string: "\(base)/search?hasImages=true&q=\(autor)")
+        guard let algo = term.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
+              let searchURL = URL(string: "\(base)/search?hasImages=true&q=\(algo)")
         else { return }
       
 
         do {
             let (sData, sResp) = try await URLSession.shared.data(from: searchURL)
             guard (sResp as? HTTPURLResponse)?.statusCode == 200 else {
-                lastError = "Búsqueda: HTTP error"
+                lastError = "Error en la conexion"
                 return
             }
             let search = try JSONDecoder().decode(SearchResponse.self, from: sData)
