@@ -1,0 +1,16 @@
+Read Me
+Este archivo esta conectado a la api del museo Met. Aqui hay un repositorio publico que indica
+como funciona https://metmuseum.github.io
+
+Se usa esta base 
+Api base https://collectionapi.metmuseum.org/public/collection/v1
+y en la variable algo que esta en model va y busca la palabra de search que esta en content view
+en un buscador general. 
+
+Pagina donde se puede buscar si lo que estas poniendo en search en la app si funcion:
+https://www.metmuseum.org/art/collection/search
+
+En la api del met hay mucha informacion sobre cada una de las piezas pero hay algunas que 
+podria no tener los datos completos porque se desconoce por lo cual se recomienda poner string?
+cuando se declara paint si es que se le quiere agregar mas informacion. 
+
