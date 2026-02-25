@@ -27,6 +27,7 @@ struct PaintRow: View {
                 if let a = paint.artist, !a.isEmpty {
                     Text(a).font(.subheadline).foregroundStyle(.secondary)
                 }
+                
             }
         }
         .padding(.vertical, 6)
@@ -40,6 +41,7 @@ struct PaintRow: View {
         artist: "AutorRandom",
         date: "c. 1890",
         primaryImageSmall: "https://www.metmuseum.org/art/collection/search/436532",
-        primaryImage: nil
+        primaryImage: nil,
+        medium: nil
     ))
 }

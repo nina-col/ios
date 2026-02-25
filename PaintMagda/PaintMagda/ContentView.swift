@@ -36,8 +36,12 @@ struct ContentView: View {
                         Text(busqueda)
                         .foregroundColor(Color(.gray))
                     List(vm.items) { p in
-                        PaintRow(paint: p)
-                    }
+                                            NavigationLink(
+                                                destination: PaintViewDetail(paint: p),
+                                                label: { PaintRow(paint: p) }
+                                            )
+                                        }
+
                     
                 }
             

@@ -14,6 +14,7 @@ struct Paint: Decodable, Identifiable {
     let date: String?
     let primaryImageSmall: String?
     let primaryImage: String?
+    let medium: String?
 
     enum CodingKeys: String, CodingKey {
         case id = "objectID"
@@ -22,6 +23,7 @@ struct Paint: Decodable, Identifiable {
         case date = "objectDate"
         case primaryImageSmall
         case primaryImage
+        case medium = "medium"
     }
 }
 //endpoint
