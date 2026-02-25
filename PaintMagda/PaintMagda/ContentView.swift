@@ -24,7 +24,10 @@ struct ContentView: View {
                     VStack(spacing: 8) {
                         ProgressView("Cargando")}
                         
-                       
+                    //aqui imprimimos el error pero mejor usamos un do catch
+                    if let error = vm.lastError {
+                        Text(error).font(.caption).foregroundStyle(.secondary)}
+
                     
                 } else {
                     Text("Met Musueum")

@@ -25,7 +25,7 @@ class PaintViewModel {
         guard let autor = term.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
               let searchURL = URL(string: "\(base)/search?hasImages=true&q=\(autor)")
         else { return }
-        
+      
 
         do {
             let (sData, sResp) = try await URLSession.shared.data(from: searchURL)
@@ -39,8 +39,8 @@ class PaintViewModel {
                 return
             }
 
-            // 2) Pedir detalles por ID
-            let first = Array(ids.prefix(25))
+            // 2)Pedir detalles por ID
+            let first = Array(ids.prefix(20))
             var fetched: [Paint] = []
             try await withThrowingTaskGroup(of: Paint?.self) { group in
                 for id in first {
@@ -59,8 +59,7 @@ class PaintViewModel {
                 }
             }
 
-            // 3)print
-
+            // 3)Se imprime en la vista
             self.items = fetched.sorted { $0.title < $1.title }
 
         } catch {
