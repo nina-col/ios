@@ -8,20 +8,20 @@ import PackageDescription
 import AppleProductTypes
 
 let package = Package(
-    name: "test",
+    name: "Speechly2",
     platforms: [
         .iOS("16.0")
     ],
     products: [
         .iOSApplication(
-            name: "test",
+            name: "Speechly2",
             targets: ["AppModule"],
             bundleIdentifier: "magda.test",
             teamIdentifier: "3X9YW2UL6C",
             displayVersion: "1.0",
             bundleVersion: "1",
-            appIcon: .placeholder(icon: .moon),
-            accentColor: .presetColor(.cyan),
+            appIcon: .placeholder(icon: .chatMessage),
+            accentColor: .presetColor(.purple),
             supportedDeviceFamilies: [
                 .pad,
                 .phone
@@ -40,5 +40,5 @@ let package = Package(
             path: "."
         )
     ],
-    swiftLanguageVersions: [.v6]
+    swiftLanguageVersions: [.version("6")]
 )

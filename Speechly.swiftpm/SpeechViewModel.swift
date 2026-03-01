@@ -5,15 +5,18 @@
 //  Created by Magda on 19/02/26.
 //
 
-import Foundation
+import SwiftUI
 
-@Observable
-class SpeechViewModel {
-
-    var arrSpeeches = [Speech]()
-
+class SpeechViewModel: ObservableObject {
+    
+    @Published var arrSpeeches: [Speech] = []
+    
     init() {
-
+        loadSpeeches()
+    }
+    
+    private func loadSpeeches() {
+        
         var speech = Speech(
             name: "IllusionOfChoice",
             title: "The illusion of choice",
@@ -22,7 +25,7 @@ class SpeechViewModel {
             imageName: ["ChichenItza", "ChichenItza2", "ChichenItza3"]
         )
         arrSpeeches.append(speech)
-
+        
         speech = Speech(
             name: "Discipline",
             title: "Discipline beats motivation",
@@ -31,7 +34,7 @@ class SpeechViewModel {
             imageName: ["TajMahal", "TajMahal2", "TajMahal3"]
         )
         arrSpeeches.append(speech)
-
+        
         speech = Speech(
             name: "Focus",
             title: "One thing at a time",

@@ -11,7 +11,7 @@ struct ContentView: View {
     @State var vm = PaintViewModel()
     //state observa cambios y actualiza
     
-    var busqueda = "renoir"
+    var busqueda = "Van Gogh"
     var body: some View {
         
         
