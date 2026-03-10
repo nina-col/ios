@@ -30,6 +30,9 @@ struct ContentView: View {
                                 .font(.subheadline)
                                 .foregroundStyle(.secondary)
                             
+                            Text("\(Int(travelgoal.priority))% priority")
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
                         }
                     }
                 }

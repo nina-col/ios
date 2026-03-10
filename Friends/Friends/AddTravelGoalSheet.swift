@@ -16,6 +16,7 @@ struct AddTravelGoalSheet: View {
     @State private var name: String = ""
     @State private var dateAdded : Date = .now
     @State private var visited: Bool = false
+    @State private var priority: Double = 0
     @State private var notes: String = ""
     
     var body: some View {
@@ -26,12 +27,16 @@ struct AddTravelGoalSheet: View {
                     .textInputAutocapitalization(.never)
                     .autocorrectionDisabled(true)
                 DatePicker("Date limit", selection: $dateAdded, displayedComponents: .date)
-                Toggle("Priority", isOn: $visited)
+                Toggle("Visited", isOn: $visited)
+                Text("Priority: \(Int(priority))%")
+                        .font(.headline)
+
+                    Slider(value: $priority, in: 0...100, step: 1)
                 TextField("Notes", text:$notes)
                     .textInputAutocapitalization(.never)
                     .autocorrectionDisabled(true)
             }
-            .navigationTitle("To do list")
+            .navigationTitle("Trip")
             .navigationBarTitleDisplayMode( .large )
             .toolbar {
                 ToolbarItemGroup(placement: .topBarLeading) {
@@ -42,7 +47,7 @@ struct AddTravelGoalSheet: View {
                 ToolbarItemGroup(placement: .topBarTrailing) {
                     Button("Save") {
                         
-                        let Recordatorio = TravelGoal(name: name, dateAdded: dateAdded, visited: visited, notes: notes)
+                        let Recordatorio = TravelGoal(name: name, dateAdded: dateAdded, visited: visited, priority: priority, notes: notes)
                         
                         context .insert(Recordatorio)
                         try! context.save()

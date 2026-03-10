@@ -25,7 +25,10 @@ struct EditTravelGoalSheet: View {
                 
                 DatePicker("Date limit", selection: $travelGoal.dateAdded, displayedComponents: .date)
                 
-                Toggle("Priority", isOn: $travelGoal.visited)
+                Toggle("Visited", isOn: $travelGoal.visited)
+                Text("Priority: \(Int(travelGoal.priority))%")
+
+                   Slider(value: $travelGoal.priority, in: 0...100, step: 1)
                 
                 TextField("Notes", text: $travelGoal.notes)
                     .textInputAutocapitalization(.never)
