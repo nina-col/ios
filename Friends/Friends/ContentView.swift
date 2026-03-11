@@ -16,44 +16,47 @@ struct ContentView: View {
     @State private var selectedTravelGoal: TravelGoal?
     
     var body: some View {
-        NavigationStack {
-            List {
-                ForEach(travelgoals) { travelgoal in
-                    Button {
-                        selectedTravelGoal = travelgoal
-                    } label: {
-                        VStack(alignment: .leading, spacing: 4) {
-                            Text(travelgoal.name)
-                                .font(.headline)
-                            
-                            Text(travelgoal.notes)
-                                .font(.subheadline)
-                                .foregroundStyle(.secondary)
-                            
-                            Text("\(Int(travelgoal.priority))% priority")
-                                .font(.caption)
-                                .foregroundStyle(.secondary)
+        ZStack {
+            
+            NavigationStack {
+                List {
+                    ForEach(travelgoals) { travelgoal in
+                        Button {
+                            selectedTravelGoal = travelgoal
+                        } label: {
+                            VStack(alignment: .leading, spacing: 4) {
+                                Text(travelgoal.name)
+                                    .font(.headline)
+                                
+                                Text(travelgoal.notes)
+                                    .font(.subheadline)
+                                    .foregroundStyle(.secondary)
+                                
+                                Text("\(Int(travelgoal.priority))% priority")
+                                    .font(.caption)
+                                    .foregroundStyle(.secondary)
+                            }
+                        }
+                    }
+                    .onDelete(perform: delete)
+                }
+                .navigationTitle("Travel goals")
+                .navigationBarTitleDisplayMode(.large)
+                .toolbar {
+                    ToolbarItem(placement: .topBarTrailing) {
+                        Button {
+                            isShowingItemSheet = true
+                        } label: {
+                            Label("Add", systemImage: "plus")
                         }
                     }
                 }
-                .onDelete(perform: delete)
-            }
-            .navigationTitle("Travel goals")
-            .navigationBarTitleDisplayMode(.large)
-            .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button {
-                        isShowingItemSheet = true
-                    } label: {
-                        Label("Add", systemImage: "plus")
-                    }
+                .sheet(isPresented: $isShowingItemSheet) {
+                    AddTravelGoalSheet()
                 }
-            }
-            .sheet(isPresented: $isShowingItemSheet) {
-                AddTravelGoalSheet()
-            }
-            .sheet(item: $selectedTravelGoal) { travelgoal in
-                EditTravelGoalSheet(travelGoal: travelgoal)
+                .sheet(item: $selectedTravelGoal) { travelgoal in
+                    EditTravelGoalSheet(travelGoal: travelgoal)
+                }
             }
         }
     }
